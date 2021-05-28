@@ -1,0 +1,15 @@
+<div class="p-grid table-demo">
+	<div class="p-col-12">
+		<div class="card">
+            <h5>Open Records</h5>
+            <app-table
+                *ngIf = "openRecord.length"
+                [tableHeader] = "openRecordTableConfig"
+                [tableData] = "openRecord"
+                [config] = "openRecordSettings"
+            >
+            
+            </app-table>
+        </div>
+    </div>
+</div>

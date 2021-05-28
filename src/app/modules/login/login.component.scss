@@ -1,0 +1,47 @@
+.nn-login-body {
+    margin: 0 auto;
+    position: relative;
+    height: 100%;
+    @media (min-width: 768px) { 
+        background: url(../../../assets/images/bodybg.jpg) center center;
+        background-position: center center ;
+    }
+    .nn-login-panel {
+        width: 100%;
+        height: max-content;
+        border-radius: 0;
+        background: white;
+        max-width: 30rem;
+        margin: 0 auto;
+        .nn-login-input {
+            background: #ffffff;
+            border-radius: 0;
+            border-left: none; 
+            border-right: none; 
+            border-top: none; 
+            &:focus {
+                outline: 0 none;
+                outline-offset: 0;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+.nn-form-container {
+    .nn-field {
+        height: 5.4rem;
+    }
+}
+
+.nn-logo-container {
+    margin: auto;
+    img {
+        height: 8rem;
+    }
+}
+
+.nn-welcome-container {
+    margin: auto;
+    color: #676a6c;
+}

@@ -1,0 +1,5 @@
+<div class="dirty" *ngIf = "isOnSubmit && condition && condition.errors">
+   {{label}} 
+   <span *ngIf="condition.errors.pattern">is Invalid</span>
+   <span *ngIf="condition.errors.required">is Required</span>
+</div>

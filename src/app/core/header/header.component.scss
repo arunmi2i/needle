@@ -1,0 +1,13 @@
+.layout-topbar {
+    .layout-topbar-logo {
+        cursor: pointer; 
+        outline: none;
+        margin: auto 0px;
+        img {
+            height: 2.6rem;
+        }
+    }
+    .profile-image {
+        border-radius: 50%;
+    }
+}

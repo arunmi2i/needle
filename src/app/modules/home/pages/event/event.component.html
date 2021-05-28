@@ -1,0 +1,6 @@
+<div class="p-grid">
+	<div class="p-col-12">
+		<app-event-list *ngIf="isListVisible" [dataList] = "eventList" (itemClick)="onEventItemClick($event)"></app-event-list>
+		<app-event-view *ngIf="isItemView"></app-event-view>
+	</div>
+</div>

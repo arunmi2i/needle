@@ -1,0 +1,47 @@
+<p-table #dt [value]="tableData" [(selection)]="selectedRows" dataKey="id" styleClass="p-datatable" [rows]="5"  [rowHover]="config.hover" [paginator]="config.paginator" [globalFilterFields]="headerFeilds">
+    <ng-template pTemplate="caption" *ngIf="config.search">
+    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+        <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                        placeholder="Search"/>
+        </span>
+        <span *ngIf="config.export.length">
+            <span *ngFor="let button of config.export; let i = index;">
+                <button pButton pRipple class="p-button-primary p-ml-2 p-ripple p-button" [label]="button.label" (click)="export(button)" *ngIf="button.format=='internal'"></button>
+            </span>
+        </span>
+    </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngIf="config.selectoption">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th *ngFor="let item of formattedTableHeader; let i = index;" pSortableColumn="{{item.field}}">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    {{item.headerName}}
+                    <p-sortIcon [attr.field]="item.field"></p-sortIcon>
+                    <p-columnFilter *ngIf="item.filterConfig.canFilter == true && item.filterConfig.format == 'date'" type="date" [attr.field]="item.field" display="menu" class="p-ml-auto"></p-columnFilter>
+                    <p-columnFilter *ngIf="item.filterConfig.canFilter == true && item.filterConfig.format == 'text'" type="text" [attr.type]="item.filterConfig.format" [attr.field]="item.field" display="menu" class="p-ml-auto"></p-columnFilter>
+                </div>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-list>
+    <tr class="p-selectable-row">
+        <td *ngIf="config.selectoption">
+            <p-tableCheckbox [value]="list"></p-tableCheckbox>
+        </td>
+        <td *ngFor="let item of formattedTableHeader; let i = index;">
+            <button *ngIf="item.type == 'button'" pButton pRipple [label]="list[item.field]" class="p-button-primary" (click)="item.onClick(list)"></button>
+            <span *ngIf="item.type == 'label'"> {{list[item.field]}} </span>
+        </td>
+    </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+    <tr>
+        <td [attr.colspan]="formattedTableHeader.length">No data found.</td>
+    </tr>
+    </ng-template>
+</p-table>

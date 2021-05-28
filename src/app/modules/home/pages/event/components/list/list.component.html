@@ -1,0 +1,49 @@
+
+<app-tab-menu [tabMenuItems] = "eventTabs"></app-tab-menu>
+<div class="card" *ngIf="dataList.length">
+	<p-dataView #dv [value]="dataList" [paginator]="true" [rows]="9" layout="list">
+		<ng-template pTemplate="header">
+			<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+				<p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+			</div>
+		</ng-template>
+        <ng-template let-event pTemplate="listItem">
+			<div class="p-col-12">
+				<div class="product-list-item card">
+					<img [src]="event.image" [alt]="event.name"/>
+					<div class="product-list-detail">
+						<div class="product-name">{{event.name}}</div>
+						<div class="product-category">{{event.date}}</div>
+						<div class="product-description">{{event.location}}</div>
+						<div class="product-category">{{event.availableseats}} seats available</div>
+					</div>
+					<div class="product-list-action">
+                        <button pButton pRipple label="Going" class="p-button-outlined"></button>
+                        <button pButton pRipple label="Not Going" class="p-button-outlined"></button>
+					</div>
+				</div>
+			</div>
+		</ng-template>
+        <ng-template let-event pTemplate="gridItem">
+			<div class="p-col-12 p-md-4">
+				<div class="product-grid-item card" (click)="onItemClick(event)">
+					<div class="product-grid-item-top">
+						<!-- <div>
+							<span class="product-category">{{event.name}}</span>
+						</div> -->
+					</div>
+					<div class="product-grid-item-content">
+						<img [src]="event.image" [alt]="event.name"/>
+						<div class="product-name">{{event.name}}</div>
+						<div class="product-description">{{event.date}}</div>
+						<div class="product-description">{{event.location}}</div>
+					</div>
+					<div class="product-grid-item-bottom">
+						<span class="product-description">{{event.availableseats}} seats available</span>
+                        <button pButton pRipple label="Going" class="p-button-outlined"></button>
+					</div>
+				</div>
+			</div>
+		</ng-template>
+	</p-dataView>
+</div>
